@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin:150px 400px;
+            background-color: rgb(65, 29, 57);
+        }
+        .container{
+            background-color: rgb(202, 113, 219);
+            padding:15px;
+            position:relative;
+            box-shadow: 2px 2px 30px rgba(171, 113, 202, 0.582);
+            border-radius: 10px;
+        }
+        textarea{
+            position:relative;
+            width:98%;
+            height:100px;
+            font-size:15px;
+        }
+        .result{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.3s;
+        }
+        .result>p{
+            text-align: center;
+            flex:1;
+            margin:20px;
+            padding:20px 10px;
+            background-color:rgb(129, 44, 115);
+            color:white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Real-time character counter</h2>
+        <textarea id="text" placeholder="Enter something"></textarea>
+        <hr>
+        <div class="result">
+            <p>
+                Words:<span id="word">0</span> 
+            </p>
+            <p>
+                and 
+            </p>
+            <p>
+                Available Space:<span id="rem">100/100</span>                
+            </p>
+        </div>
+    </div>    
+</body>
+<script>
+    let area=document.getElementById('text');
+    let words=document.getElementById('word');
+    let avail=document.getElementById('rem');
+
+    area.addEventListener('input', function(){
+        let val=this.value;
+        let count=val.length;
+        words.innerText=count;
+
+        let rem=100-count;
+        avail.innerText=rem+"/100";
+        
+        if(count>100)
+        alert("Input should not exceed 100 characters");
+
+    })
+</script>
+</html>
